@@ -2,8 +2,8 @@ import { Sequelize } from 'sequelize';
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: './database.sqlite', // Path to SQLite database file
-  // streage : './server/data/database.db'
+  //storage: './database.sqlite', // Path to SQLite database file
+  storage : './server/data/database.db',
   logging: console.log, // Optional: Set to `false` to disable logging
 });
 
