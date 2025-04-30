@@ -7,7 +7,7 @@ const apiBaseUrl = 'https://movies-proxy.vercel.app'
 
 export default defineNuxtConfig({
   serverMiddleware: [
-    { path: '/api', handler: '~/server-middleware/api/users.js' }
+    { path: '/api', handler: '~/server-middleware/api/users.js' },
   ],
   plugins: ['~/plugins/axios.ts'],
   css: [

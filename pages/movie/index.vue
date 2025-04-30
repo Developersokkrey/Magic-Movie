@@ -26,7 +26,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mt-25 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
+  <div class="mt- grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
     <div v-for="movie in movies" 
             :key="movie.RecID" 
             @click="viewActorDetails(movie.RecID)" 

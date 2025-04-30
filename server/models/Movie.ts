@@ -60,7 +60,7 @@ Movie.init(
   },
   {
     sequelize,
-    tableName: 'Movies',
+    tableName: 'movie',
   }
 );
 

@@ -5,14 +5,18 @@ const { $axios } = useNuxtApp();
 
 // Reactive variable to store fetched users
 const users = ref([]);
+const actors = ref([]);
 
 // Function to fetch users
 const fetchUsers = async () => {
   try {
     // const response = await $axios.get('/users');
-    const response = await $axios.get('/user');
-    users.value = response.data; // Store the users in the reactive variable
-    console.log('Users:', users.value);
+    const responseActors = await $axios.get('/actors');
+    // const response = await $axios.get('/user');
+    // users.value = response.data; // Store the users in the reactive variable
+    actors.value = responseActors.data;
+    // console.log('Users:', users.value);
+    console.log('Actors', actors.value);
   } catch (error) {
     console.error('Error fetching users:', error);
   }
@@ -28,7 +32,7 @@ useHead({
   htmlAttrs: {
     lang: 'en',
   },
-  charset: 'utf-8',
+  // charset: 'utf-8',
   title: 'Magic Movies',
   titleTemplate: title => title !== 'Nuxt Movies' ? `${title} · Nuxt Movies` : title,
   meta: [
@@ -48,6 +52,7 @@ useHead({
 });
 </script>
 <template>
+  
   <div class="fixed top-0 left-0.4 w-full z-50">
         <nav class="bg-black border-black dark:bg-black">
           <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
@@ -126,6 +131,7 @@ useHead({
         </div>
       </div>
     </nav> -->
+    
   <NuxtLoadingIndicator />
   <div h-full w-full font-sans grid="~ lt-lg:rows-[1fr_max-content] lg:cols-[max-content_1fr]" of-hidden
     view-transition-app transition duration-0>
@@ -172,11 +178,12 @@ useHead({
         </nav>
       </div>
       <NuxtPage />
+      <!-- <HomePage /> -->
     </div>
 
     <NavBar lg:order-first />
     <IframeModal />
-    <PhotoModal />
+    <!-- <PhotoModal /> -->
 
   </div>
 </template>
