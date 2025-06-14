@@ -1,5 +1,5 @@
 import { defineEventHandler, getQuery, readBody, sendError, createError } from 'h3';
-import Actors from '../models/Actors'; // Ensure correct path
+import Models from '../models/Models'; // Ensure correct path
 
 export default defineEventHandler(async (event) => {
   const method = event.node.req.method;
@@ -9,14 +9,14 @@ export default defineEventHandler(async (event) => {
       const query = getQuery(event);
 
       if (query.RecID) {
-        const actor = await Actors.findOne({ where: { RecID: query.RecID } });
+        const actor = await Models.findOne({ where: { RecID: query.RecID } });
         if (!actor) {
           return sendError(event, createError({ statusCode: 404, statusMessage: "Actor not found" }));
         }
         return { success: true, data: actor };
       }
 
-      const actors = await Actors.findAll();
+      const actors = await Models.findAll();
       return { success: true, data: actors };
     }
 
@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
         return sendError(event, createError({ statusCode: 400, statusMessage: "Missing required fields" }));
       }
 
-      const newActor = await Actors.create(body);
+      const newActor = await Models.create(body);
       return { success: true, data: newActor };
     }
 
@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
         return sendError(event, createError({ statusCode: 400, statusMessage: "RecID is required" }));
       }
 
-      const actor = await Actors.findOne({ where: { RecID: body.RecID } });
+      const actor = await Models.findOne({ where: { RecID: body.RecID } });
       if (!actor) {
         return sendError(event, createError({ statusCode: 404, statusMessage: "Actor not found" }));
       }

@@ -1,7 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../sequelize';
 
-class Actors extends Model {
+class Models extends Model {
   public RecID!: string;
   public Name!: string;
   public ActorsProfile?: string;
@@ -14,7 +14,7 @@ class Actors extends Model {
   public readonly updatedAt!: Date;
 }
 
-Actors.init(
+Models.init(
   {
     RecID: {
       type: DataTypes.STRING,
@@ -49,8 +49,8 @@ Actors.init(
   },
   {
     sequelize,
-    tableName: 'actors',
+    tableName: 'model',
   }
 );
 
-export default Actors;
+export default Models;
